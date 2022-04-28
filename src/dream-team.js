@@ -26,23 +26,16 @@ const { NotImplementedError } = require('../extensions/index.js');
 }
  */
 function createDreamTeam(members) {
-  let nameOfTheTeam = '';
-  if (Array.isArray(members)){
-    members.map((name)=>{
-      if (typeof name === 'string' && /[A-Za-z]/.test(name.trim()[0])){
-        return name.trim()[0].toUpperCase();
-      }else{
-        return '';
-      }
-    })
-    members.sort();
-    members.join('');
-    nameOfTheTeam = members.toString();
-    return nameOfTheTeam
-  }else{
-    return false;
-  }
-
+  return Array.isArray(members)
+    ? members
+        .map((name) =>
+          typeof name === 'string' && /[A-Za-z]/.test(name.trim()[0])
+            ? name.trim()[0].toUpperCase()
+            : ''
+        )
+        .sort()
+        .join('')
+    : false;
 }
 
 module.exports = {
