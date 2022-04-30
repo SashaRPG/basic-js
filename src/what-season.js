@@ -27,7 +27,8 @@ function seasonNum(num){
 function getSeason(date) {
   if (!date) return 'Unable to determine the time of year!';
   try {
-    if (new Date(JSON.parse(JSON.stringify(date))) != 'Invalid Date') {
+    let x = new Date(date);
+    if ('' + Date.prototype.getMonth === '' + date.getMonth) {
       return seasonNum(date.getMonth());
     } else {
       throw '';
